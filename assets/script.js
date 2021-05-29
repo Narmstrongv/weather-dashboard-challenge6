@@ -25,6 +25,7 @@ var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
 
 var loc = document.querySelectorAll('.location');
 
+//TODO
 // place json in variable
 
 // place said variable inner html
@@ -48,6 +49,12 @@ function getWeather(location) {
         console.log(data);
     });
 }
+
+var getData = function() {
+    var response = fetch('https://api.openweathermap.org/data/2.5/weather?q=Sacremento&appid=' + APIKey);
+    console.log(response)
+};
+getData();
 
 
 
