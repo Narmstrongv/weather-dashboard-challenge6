@@ -22,10 +22,34 @@ var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
 // .then(x => x.text())
 // .then(y => document.getElementById("demo").innerHTML = y);
 
-fetch('https://api.openweathermap.org/data/2.5/weather?lat=34&lon=118&appid=' + APIKey)
+
+var loc = document.querySelectorAll('.location');
+
+// place json in variable
+
+// place said variable inner html
+
+
+for(var i =0; i < loc.length; i++) {
+    loc[i].addEventListener('click', function(e){
+        console.log(e.target.getAttribute('value'));
+        getWeather(e.target.getAttribute('value'));
+    })
+}
+
+function getWeather(location) {
+    fetch('https://api.openweathermap.org/data/2.5/weather?appid=' + APIKey + '&q=' + location)
     .then(response => {
         return response.json();
     })
     .then(data => {
         console.log(data);
     });
+}
+
+//
+
+
+//Date and Time
+//var dateTime = new Date();
+//document.getElementById('currentDay').innerHTML = dateTime;
