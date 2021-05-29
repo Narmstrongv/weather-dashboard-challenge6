@@ -29,6 +29,8 @@ var loc = document.querySelectorAll('.location');
 
 // place said variable inner html
 
+//use html to move boxs into rows
+
 
 for(var i =0; i < loc.length; i++) {
     loc[i].addEventListener('click', function(e){
@@ -47,7 +49,6 @@ function getWeather(location) {
     });
 }
 
-//
 
 
 //Date and Time
