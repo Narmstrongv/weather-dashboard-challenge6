@@ -13,7 +13,8 @@
 var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
 
 //openweather weather call
-// api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+// https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+// https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
 //fetch request
 // let file = "fetch_info.txt"
@@ -21,7 +22,7 @@ var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
 // .then(x => x.text())
 // .then(y => document.getElementById("demo").innerHTML = y);
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=Riverside&appid=' + APIKey)
+fetch('https://api.openweathermap.org/data/2.5/weather?lat=34&lon=118&appid=' + APIKey)
     .then(response => {
         return response.json();
     })
