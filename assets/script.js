@@ -10,7 +10,7 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
+
 
 //openweather weather call
 // https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
@@ -22,8 +22,33 @@ var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
 // .then(x => x.text())
 // .then(y => document.getElementById("demo").innerHTML = y);
 
-
+var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
+var userFormE1 = document.querySelector("#user-form");
+var nameInputE1 = document.querySelector("#username");
 var loc = document.querySelectorAll('.location');
+
+var formSubmitHandler = function(event) {
+    event.preventDefault();
+    //gets value from input
+    var username = nameInputE1.value.trim();
+    //username = location
+    if (username) {
+        getWeather(username);
+        nameInputE1.value = "";
+    } else {
+        alert("Please enter a location");
+    }
+    console.log(event);
+}
+
+userFormE1.addEventListener("submit", formSubmitHandler);
+console.log(userFormE1);
+
+//arrayData = repos
+var displayWeather = function(arrayData, searchTerm) {
+    console.log(arrayData);
+    console.log(searchTerm);
+};
 
 //TODO
 // place json in variable
@@ -40,6 +65,19 @@ for(var i =0; i < loc.length; i++) {
     })
 }
 
+//getUserRepos = getWeather
+
+//scum save
+// function getWeather(location) {
+//     fetch('https://api.openweathermap.org/data/2.5/weather?appid=' + APIKey + '&q=' + location)
+//     .then(response => {
+//         return response.json();
+//     })
+//     .then(data => {
+//         console.log(data);
+//     });
+// }
+
 function getWeather(location) {
     fetch('https://api.openweathermap.org/data/2.5/weather?appid=' + APIKey + '&q=' + location)
     .then(response => {
@@ -50,11 +88,15 @@ function getWeather(location) {
     });
 }
 
-var getData = function() {
-    var response = fetch('https://api.openweathermap.org/data/2.5/weather?q=Sacremento&appid=' + APIKey);
-    console.log(response)
-};
-getData();
+
+// var getData = function() {
+//     fetch('https://api.openweathermap.org/data/2.5/weather?q=Riverside&appid=' + APIKey).then(function(response) {
+//         response.json().then(function(data) {
+//             console.log(data);
+//         });
+//     });
+// }  
+// getData();
 
 
 
