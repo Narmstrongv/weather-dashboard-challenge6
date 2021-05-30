@@ -26,6 +26,8 @@ var APIKey = "066b07abfaddb8582d123cb46ddd5a1f";
 var userFormE1 = document.querySelector("#user-form");
 var nameInputE1 = document.querySelector("#username");
 var loc = document.querySelectorAll('.location');
+var dataContainerE1 = document.querySelector("weather-container");
+var dataSearchTerm = document.querySelector("data-search-term");
 
 var formSubmitHandler = function(event) {
     event.preventDefault();
@@ -48,7 +50,13 @@ console.log(userFormE1);
 var displayWeather = function(arrayData, searchTerm) {
     console.log(arrayData);
     console.log(searchTerm);
+
+    //clears old content
+    // dataContainerE1.textContent = "";
+    // dataSearchTerm.textContent = searchTerm;
 };
+
+
 
 //TODO
 // place json in variable
@@ -81,11 +89,10 @@ for(var i =0; i < loc.length; i++) {
 function getWeather(location) {
     fetch('https://api.openweathermap.org/data/2.5/weather?appid=' + APIKey + '&q=' + location)
     .then(response => {
-        return response.json();
+        return response.json().then(function(data) {
+            displayWeather(data, location);
+        })
     })
-    .then(data => {
-        console.log(data);
-    });
 }
 
 
